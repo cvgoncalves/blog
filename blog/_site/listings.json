@@ -1,0 +1,15 @@
+[
+  {
+    "listing": "/today_i_learned.html",
+    "items": [
+      "/til_posts/quarto_r_python/index.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/post-with-code/index.html",
+      "/posts/welcome/index.html"
+    ]
+  }
+]

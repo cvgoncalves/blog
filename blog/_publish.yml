@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: 23375e78-32d4-437b-bd01-42b2ee7cd829
+      url: 'https://mrglab.netlify.app'

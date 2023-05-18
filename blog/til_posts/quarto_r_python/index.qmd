@@ -1,0 +1,29 @@
+---
+title: Quarto with R and Python
+date: "5/22/2021"
+format: 
+  html:
+    code-fold: true
+execute:
+  engine: "r"
+about:
+  template: jolla
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/GoncalvesCv
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/cvgoncalves/
+    - icon: github
+      text: Github
+      href: https://github.com/cvgoncalves
+---
+
+Today I learned something simple and cool.
+
+I can use R and Python in the same document with [Quarto](https://quarto.org/).
+To post using different engines, I just need to use the `engine` option in the code chunk.
+
+For example, to use R, I just need to use `engine = "r"` in the yaml of the post.
+To use Python, I just need to use `engine = "python"`.
