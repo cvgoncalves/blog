@@ -1,0 +1,35 @@
+
+```{r}
+# Import necessary library
+library(ggplot2)
+
+# Create data frame
+game_data <- data.frame(
+  vehicle = factor(c("FP", "PV"), levels = c("FP", "PV")),  # Use factor to control order
+  speed = c(7, 9),  # Speed ratings
+  max_speed = c(8, 10),  # Maximum possible speeds
+  color = c("blue", "red")
+)
+
+# Create plot
+ggplot(game_data, aes(y = vehicle, fill = color)) +
+  geom_bar(aes(x = max_speed), stat = "identity", color = "gray", alpha = 0.2, width = 0.1) +
+  geom_bar(aes(x = speed), stat = "identity", width = 0.1) +
+  scale_fill_identity() +
+  theme_minimal() +
+  theme(
+    plot.background = element_rect(fill = "transparent", color = NA), # make background transparent
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.border = element_blank(),
+    panel.background = element_blank(),
+    legend.position = "none",
+    axis.title.x = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    # plot.title = element_text(hjust = 0.5)
+  ) +
+  # labs(title = "Speed Ratings of Vehicles in Game", y = "Vehicle", x = "Speed") +
+  coord_cartesian(xlim = c(0, max(game_data$max_speed, na.rm = TRUE)), clip = "off")
+
+```

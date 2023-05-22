@@ -1,0 +1,59 @@
+---
+title: "Automate pdf reports with Quarto and Python"
+lang: "en"
+author: "claudio v."
+date: "2023-03-31"
+categories: [news, code, analysis]
+image: "quarto_icon.png"
+execute:
+    engine: "python"    
+draft: true
+
+---
+
+In this post I'll walk us through how we can create some pdf reports in python and quarto, how to properlly publish it and how to automate the process of creating the reports.
+
+# Setting things up
+
+We first need to set things up. For the purpose of this article, we will be using VSCode with Quarto to develope this project. 
+
+You can follow the [Quarto website](https://quarto.org/docs/get-started/) tutorial to install Quarto and the VSCode extension.
+
+After you have your quarto extention installed, you can create a new project by clicking on the Quarto icon on the left side of the VSCode window and then clicking on the "New Project" button.
+
+![Create New Project](imgs/create_new_project.png)
+
+![Select Default Project](imgs/select_type_project.png)
+
+![Create New Folder](imgs/create_new_folder.png)
+
+After that, you will see something like this:
+
+![Starting structure](imgs/lets_start.png)
+
+As you can see we have 2 files. `_quarto.yml` and `automate_reporting.qmd`. 
+
+To make our lives easy we will install a pretty cool quarto extention called [PrettyPDF](https://nrennie.rbind.io/blog/making-pretty-pdf-quarto/), which will help us to make our pdf reports look better. To install the quarto extension and use the template file:
+
+```{python}
+#| eval: false
+quarto use template nrennie/PrettyPDF
+```
+
+![Install the template](imgs/install_template.png)
+
+And finally, lets create a envoirement for this project.
+
+I am on Mac so this is the command:
+
+```{python}
+#| eval: false
+python3 -m venv .venv
+```
+
+And to finish this part, I'll just create the folder structure we will be using for this project.
+
+![Folder structure](imgs/folder_structure.png)
+
+# Creating the report
+

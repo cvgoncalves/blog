@@ -1,0 +1,758 @@
+---
+title: "rpg"
+image: img/fantasy75.jpg
+execute:
+  engine: 'r'
+about:
+  template: jolla
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com/GoncalvesCv
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/cvgoncalves/
+    - icon: github
+      text: Github
+      href: https://github.com/cvgoncalves
+---
+
+Here we will have the rpg sessions recorded and measured!
+
+```{r}
+#| echo: false
+#| eval: true
+
+library(fmsb)
+
+# Define the data
+attributes <- data.frame(
+  row.names = c("HanYu", "Eldrich", "Dumdin", "Eglart", "Mohamed"),
+    ST = c(11, 8, 15, 12, 11), 
+    DX = c(14, 11, 12, 12, 12), 
+    IQ = c(11, 15, 8, 10, 12),
+    HT = c(11, 9, 12, 10, 11)
+)
+
+# Define the variable ranges: maximum and minimum
+max_min <- data.frame(
+  ST = c(20, 0), 
+  DX = c(20, 0), 
+  IQ = c(20, 0),
+  HT = c(20, 0)
+)
+rownames(max_min) <- c("Max", "Min")
+
+# Prepare the data for the radar plot
+df <- rbind(max_min, attributes)
+
+
+
+```
+
+# Personagens
+
+:::{.panel-tabset}
+
+## Han Yu
+
+::: {.grid}
+
+::: {.g-col-4}
+::: {layout-align="center"}
+
+![Han Yu](img/han_yu.jpg)
+
+:::
+
+:::
+
+::: {.g-col-8}
+
+|                     |                       |                       |                      |
+|:-------------------:|:---------------------:|:---------------------:|:--------------------:|
+| **Player**          | Vinny Jones           | **Campaign**          | Fantasy              |
+
+
+
+# Han Yu
+
+Era discípulo nos Cincos Picos da Neblina. Se auto-graduou Mestre quando o templo foi dizimado por estranhos ninjas encapuzados.  Deixou Sahûd pela 1ª vez em direção ao sul de Caíthness em busca de respostas.
+
+:::{.panel-tabset}
+
+## Atributos
+
+:::{layout-ncol="2"}
+```{r}
+#| echo: false
+#| eval: true
+# Import necessary library
+library(ggplot2)
+
+# Create data frame
+game_data <- data.frame(
+  vehicle = factor(c("FP", "PV"), levels = c("FP", "PV")),  # Use factor to control order
+  speed = c(10, 6),  # Speed ratings
+  max_speed = c(13, 10),  # Maximum possible speeds
+  color = c("blue", "red")
+)
+
+# Create plot
+ggplot(game_data, aes(y = vehicle, fill = color)) +
+  geom_bar(aes(x = max_speed), stat = "identity", color = "gray", alpha = 0.2, width = 0.1) +
+  geom_bar(aes(x = speed), stat = "identity", width = 0.1) +
+  scale_fill_identity() +
+  theme_minimal() +
+  theme(
+    plot.background = element_rect(fill = "transparent", color = NA), # make background transparent
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.border = element_blank(),
+    panel.background = element_blank(),
+    legend.position = "none",
+    axis.title.x = element_blank(),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    # plot.title = element_text(hjust = 0.5)
+  ) +
+  # labs(title = "Speed Ratings of Vehicles in Game") +
+  coord_cartesian(xlim = c(0, max(game_data$max_speed, na.rm = TRUE)), clip = "off")
+
+```
+
+```{r}
+#| echo: false
+#| eval: true
+#| 
+
+# Plot the data for han yu
+han_yu <- df[rownames(df) %in% c("Max", "Min", "HanYu"), ]
+# Set the margins around the plot
+par(mar = c(4, 4, 4, 4))
+
+radarchart(han_yu, axistype = 1, 
+           #custom polygon
+           pcol = rgb(0.1, 0.4, 0.9, 0.5), pfcol = rgb(0.1, 0.4, 0.9, 0.3), plwd = 4,
+           #custom the grid
+           cglcol = "grey", cglty = 1, axislabcol = "grey", caxislabels = seq(0, 20, 5), cglwd = 0.8,
+           #custom labels
+           vlcex = 0.8, vlabels = colnames(attributes), title = "Atributos"
+           )
+
+# Add the values at each point
+text(1.2 * han_yu[3, ] / han_yu[1, ], labels = han_yu[2, ], col = "darkblue", cex = 1.0)
+
+```
+:::
+
+
+<!-- | **Peculiaridades**  |                       | **Vantagens**         |   **Desvantagens**   |
+|Desconfortável ante autoridades|             | Treinado por um Mestre| Votos                |
+|Dá conselhos e cita provérbios|              | Talentos do Chi       | Odeia mentir         |
+|Prega calma, mas é explosivo...|            | Sete Chutes secretos   | Ritual de Chi        |
+|Humildade: Prioriza os Outros!|             |                        | Senso de Dever       |
+|Só bebe chá e sakê socialmente|             |                        | -                    |  -->
+
+
+
+
+| Dano Basico |       | Movimento    |      |
+|:-----------:|:-----:|:------------:|:----:|
+| Bal         | 1d    | Velocidade   | 5.25 |
+| GdP         | 1d-2  | Deslocamento | 5    |
+| Soco        | 1d-1  |              |      |
+| Chute       | 1d+1  |              |      |
+
+## Habilidades
+
+| Skill Name | Points | Skill Level | Skill Name | Points | Skill Level |
+|:----------:|:------:|:-----------:|:----------:|:------:|:-----------:|
+| Kung-Fu Dragon Style | 8 | 13 | Magic Breath | 1 | 13 |
+| Karate | 8 | 11 | Judo | 8 | 11 |
+| Staff | 8 | 11 | Philosophy | 12 | 14 |
+| Flying Jump | 6 | 14 | Yin-Yang Healing | 1 | 8 |
+| Meditation | 4 | 9 | Theology | 4 | 10 |
+| Breath Control | 1 | 7 | Acrobatics | 1 | 10 |
+| Stealth | 1 | 10 | Disintegrating Strike | 0.5 | 10 |
+| Pressure Points | 0.5 | 10 |
+
+*Other skills and maneuvers not listed*
+
+## Equipamento
+:::{layout-ncol="2" layout-nrow="5"} 
+Quimono do Imperador
+
+image1
+
+Capa de Harkwood
+
+image2
+
+Manoplas
+
+image3
+
+Roupas leves de Monge
+
+image4
+
+Botas Flutuantes
+
+image5
+:::
+
+<!-- ## (Des)Vantagens
+| Advantages | Points | Disadvantages | Points |
+|:----------:|:------:|:-------------:|:------:|
+| Trained by a Master | 40 | Vows | -15 |
+| Appearence +2/+3 (royalty) | - | Truthfulness (hates lying) | -5 |
+| Status +2/+3 (royalty) | - | Duty Sense (group) | -5 |
+| Reputation +2/+3 (royalty) | - | Fast Draw [*] | - |
+| Dragon Blue Tattoo | 15 | - | - |
+| Chi Talents [*] Level 3 | 45 | - | - | -->
+
+
+
+:::
+
+:::
+
+:::
+
+
+## Sir Mohameed III
+
+::: {.grid}
+
+::: {.g-col-4}
+::: {layout-nrow="2"}
+
+![Sir Mohameed III](img/mohamed.jpg)
+
+```{r}
+#| echo: false
+#| eval: true
+
+library(fmsb)
+
+# Plot the data for han yu
+mohamed <- df[rownames(df) %in% c("Max", "Min", "Mohamed"), ]
+
+# Set the margins around the plot
+par(mar = c(4, 4, 4, 4))
+
+radarchart(mohamed, axistype = 1, 
+           # custom polygon
+           pcol = rgb(0.9, 0.1, 0.1, 0.9), pfcol = rgb(0.9, 0.1, 0.1, 0.5), plwd = 4,
+           # custom the grid
+           cglcol = "grey", cglty = 1, axislabcol = "grey", caxislabels = seq(0, 20, 5), cglwd = 0.8,
+           #custom labels
+           vlcex = 0.8, vlabels = colnames(attributes), title = "Mohamed")
+
+# Add the values at each point
+text(1.2 * mohamed[2, ] / mohamed[1, ], labels = mohamed[1, ], col = "purple", cex = 1.0)
+
+```
+
+:::
+
+:::
+
+::: {.g-col-8}
+
+|                     |                       |                       |                      |
+|:-------------------:|:---------------------:|:---------------------:|:--------------------:|
+| **Player**          | PJotinha              | **Campaign**          | Fantasy              |
+
+# Sir Mohameed III
+
+Porta as cores e o brasão dos Dragões de Sir Jorge, sagrada Ordem de cavaleiros de Caíthness, armada pessoal do Arcebispo Gregorious, protetora dos templos e igrejas, além de padres e bispos.
+
+:::{.panel-tabset}
+
+## Atributos
+
+| Atributo  | Valor |                |Valor |
+|:---------:|:-----:|:--------------:|:----:|
+| ST        | 10    | PV             | 6    |
+| DX        | 14    | FP             | 10   |
+| IQ        | 11    |                |      |
+| HT        | 10    |                |      |
+
+| Dano Basico |       | Movimento    |      |
+|:-----------:|:-----:|:------------:|:----:|
+| Bal         | 1d    | Velocidade   | 5.25 |
+| GdP         | 1d-2  | Deslocamento | 5    |
+| Soco        | 1d-1  |              |      |
+| Chute       | 1d+1  |              |      |
+
+## Habilidades
+
+| Skill Name | Points | Skill Level | Skill Name | Points | Skill Level |
+|:----------:|:------:|:-----------:|:----------:|:------:|:-----------:|
+| Kung-Fu Dragon Style | 8 | 13 | Magic Breath | 1 | 13 |
+| Karate | 8 | 11 | Judo | 8 | 11 |
+| Staff | 8 | 11 | Philosophy | 12 | 14 |
+| Flying Jump | 6 | 14 | Yin-Yang Healing | 1 | 8 |
+| Meditation | 4 | 9 | Theology | 4 | 10 |
+| Breath Control | 1 | 7 | Acrobatics | 1 | 10 |
+| Stealth | 1 | 10 | Disintegrating Strike | 0.5 | 10 |
+| Pressure Points | 0.5 | 10 |
+
+*Other skills and maneuvers not listed*
+
+## Equipamento
+:::{layout-ncol="2" layout-nrow="5"} 
+Quimono do Imperador
+
+image1
+
+Capa de Harkwood
+
+image2
+
+Manoplas
+
+image3
+
+Roupas leves de Monge
+
+image4
+
+Botas Flutuantes
+
+image5
+:::
+
+<!-- ## (Des)Vantagens
+| Advantages | Points | Disadvantages | Points |
+|:----------:|:------:|:-------------:|:------:|
+| Trained by a Master | 40 | Vows | -15 |
+| Appearence +2/+3 (royalty) | - | Truthfulness (hates lying) | -5 |
+| Status +2/+3 (royalty) | - | Duty Sense (group) | -5 |
+| Reputation +2/+3 (royalty) | - | Fast Draw [*] | - |
+| Dragon Blue Tattoo | 15 | - | - |
+| Chi Talents [*] Level 3 | 45 | - | - | -->
+
+
+
+:::
+
+:::
+
+:::
+
+## Eldrich
+
+::: {.grid}
+
+::: {.g-col-4}
+::: {layout-nrow="2"}
+
+![Eldrich](img/eldrich.jpg)
+
+```{r}
+#| echo: false
+#| eval: true
+
+library(fmsb)
+
+# Plot the data for han yu
+eldrich <- df[rownames(df) %in% c("Max", "Min", "Eldrich"), ]
+
+# Set the margins around the plot
+par(mar = c(4, 4, 4, 4))
+
+radarchart(eldrich, axistype = 1, 
+           # custom polygon
+           pcol = rgb(0.2, 0.1, 0.4, 0.9), pfcol = rgb(0.2, 0.1, 0.4, 0.5), plwd = 4, 
+           # custom the grid
+           cglcol = "grey", cglty = 1, axislabcol = "grey", caxislabels = seq(0, 20, 5), cglwd = 0.8,
+           #custom labels
+           vlcex = 0.8, vlabels = colnames(attributes), title = "Eldrich")
+
+# Add the values at each point
+text(1.2 * eldrich[2, ] / eldrich[1, ], labels = eldrich[1, ], col = "purple", cex = 1.0)
+
+```
+:::
+
+:::
+
+::: {.g-col-8}
+|                     |                       |                       |                      |
+|:-------------------:|:---------------------:|:---------------------:|:--------------------:|
+| **Player**          | Brancão               | **Campaign**          | Fantasy              |
+
+# Eldrich
+
+Um Elfo Negro!
+
+1,69 m e 57 kg ; de peles azulada, quase púrpura, longos cabelos alvos e olhar sinistro. Idade indecifrável, como todo elfo.
+
+Normalmente, como agora, veste um manto com capuz, a fim de evitar indagações sobre seu povo. Não tem falado muito desde que se sentou, solitário, num dos cantos do Leão Beberrão. Mas parece atento a tudo e a todos.
+
+Carrega ainda um belo sabre à cintura, e já foi visto perambulando pela cidade na companhia de um corvo.
+
+<!-- |                     |                       |                       |                      |
+|:-------------------:|:---------------------:|:---------------------:|:--------------------:|
+| **Player**          | Vinny Jones           | **Campaign**          | Fantasy              |
+| **Peculiaridades**  |                       | **Vantagens**         |   **Desvantagens**   |
+|Desconfortável ante autoridades|             | Treinado por um Mestre| Votos                |
+|Dá conselhos e cita provérbios|              | Talentos do Chi       | Odeia mentir         |
+|Prega calma, mas é explosivo...|            | Sete Chutes secretos   | Ritual de Chi        |
+|Humildade: Prioriza os Outros!|             |                        | Senso de Dever       |
+|Só bebe chá e sakê socialmente|             |                        | -                    | -->
+
+
+
+:::{.panel-tabset}
+
+## Atributos
+
+| Atributo  | Valor |                |Valor |
+|:---------:|:-----:|:--------------:|:----:|
+| ST        | 10    | PV             | 6    |
+| DX        | 14    | FP             | 10   |
+| IQ        | 11    |                |      |
+| HT        | 10    |                |      |
+
+| Dano Basico |       | Movimento    |      |
+|:-----------:|:-----:|:------------:|:----:|
+| Bal         | 1d    | Velocidade   | 5.25 |
+| GdP         | 1d-2  | Deslocamento | 5    |
+| Soco        | 1d-1  |              |      |
+| Chute       | 1d+1  |              |      |
+
+## Habilidades
+
+| Skill Name | Points | Skill Level | Skill Name | Points | Skill Level |
+|:----------:|:------:|:-----------:|:----------:|:------:|:-----------:|
+| Kung-Fu Dragon Style | 8 | 13 | Magic Breath | 1 | 13 |
+| Karate | 8 | 11 | Judo | 8 | 11 |
+| Staff | 8 | 11 | Philosophy | 12 | 14 |
+| Flying Jump | 6 | 14 | Yin-Yang Healing | 1 | 8 |
+| Meditation | 4 | 9 | Theology | 4 | 10 |
+| Breath Control | 1 | 7 | Acrobatics | 1 | 10 |
+| Stealth | 1 | 10 | Disintegrating Strike | 0.5 | 10 |
+| Pressure Points | 0.5 | 10 |
+
+*Other skills and maneuvers not listed*
+
+## Equipamento
+:::{layout-ncol="2" layout-nrow="5"} 
+Quimono do Imperador
+
+image1
+
+Capa de Harkwood
+
+image2
+
+Manoplas
+
+image3
+
+Roupas leves de Monge
+
+image4
+
+Botas Flutuantes
+
+image5
+:::
+
+<!-- ## (Des)Vantagens
+| Advantages | Points | Disadvantages | Points |
+|:----------:|:------:|:-------------:|:------:|
+| Trained by a Master | 40 | Vows | -15 |
+| Appearence +2/+3 (royalty) | - | Truthfulness (hates lying) | -5 |
+| Status +2/+3 (royalty) | - | Duty Sense (group) | -5 |
+| Reputation +2/+3 (royalty) | - | Fast Draw [*] | - |
+| Dragon Blue Tattoo | 15 | - | - |
+| Chi Talents [*] Level 3 | 45 | - | - | -->
+
+
+
+:::
+
+:::
+
+:::
+
+## Dumdin
+
+::: {.grid}
+
+::: {.g-col-4}
+::: {layout-nrow="2"}
+
+![Dumdin](img/dumdim.jpg)
+
+```{r}
+#| echo: false
+#| eval: true
+
+library(fmsb)
+
+# Plot the data for han yu
+dumdin <- df[rownames(df) %in% c("Max", "Min", "Dumdin"), ]
+
+# Set the margins around the plot
+par(mar = c(4, 4, 4, 4))
+
+radarchart(dumdin, axistype = 1, 
+           # custom polygon
+           pcol = rgb(0.4, 0.4, 0.4, 0.9), pfcol = rgb(0.4, 0.4, 0.4, 0.5), plwd = 4, 
+           # custom the grid
+           cglcol = "grey", cglty = 1, axislabcol = "grey", caxislabels = seq(0, 20, 5), cglwd = 0.8,
+           #custom labels
+           vlcex = 0.8, vlabels = colnames(attributes), title = "Dumdin")
+
+# Add the values at each point
+text(1.2 * dumdin[2, ] / dumdin[1, ], labels = dumdin[1, ], col = "purple", cex = 1.0)
+
+```
+
+:::
+
+:::
+
+::: {.g-col-8}
+
+|                     |                       |                       |                      |
+|:-------------------:|:---------------------:|:---------------------:|:--------------------:|
+| **Player**          | Pery                  | **Campaign**          | Fantasy              |
+
+# Dumdin
+
+Anão. 1,43 m e 129 kg ; possui um rosto de proporções estranhas e corte de cabelo esquisito para os padrões humanos. Está sempre suado e fedido, e parece não escutar muito bem. Talvez por isso fale alto demais.
+
+A única coisa que ele parece gostar mais do que uma boa briga, é uma boa cerveja.
+
+<!-- |                     |                       |                       |                      |
+|:-------------------:|:---------------------:|:---------------------:|:--------------------:|
+| **Player**          | Vinny Jones           | **Campaign**          | Fantasy              |
+| **Peculiaridades**  |                       | **Vantagens**         |   **Desvantagens**   |
+|Desconfortável ante autoridades|             | Treinado por um Mestre| Votos                |
+|Dá conselhos e cita provérbios|              | Talentos do Chi       | Odeia mentir         |
+|Prega calma, mas é explosivo...|            | Sete Chutes secretos   | Ritual de Chi        |
+|Humildade: Prioriza os Outros!|             |                        | Senso de Dever       |
+|Só bebe chá e sakê socialmente|             |                        | -                    | -->
+
+
+
+:::{.panel-tabset}
+
+## Atributos
+
+| Atributo  | Valor |                |Valor |
+|:---------:|:-----:|:--------------:|:----:|
+| ST        | 10    | PV             | 6    |
+| DX        | 14    | FP             | 10   |
+| IQ        | 11    |                |      |
+| HT        | 10    |                |      |
+
+| Dano Basico |       | Movimento    |      |
+|:-----------:|:-----:|:------------:|:----:|
+| Bal         | 1d    | Velocidade   | 5.25 |
+| GdP         | 1d-2  | Deslocamento | 5    |
+| Soco        | 1d-1  |              |      |
+| Chute       | 1d+1  |              |      |
+
+## Habilidades
+
+| Skill Name | Points | Skill Level | Skill Name | Points | Skill Level |
+|:----------:|:------:|:-----------:|:----------:|:------:|:-----------:|
+| Kung-Fu Dragon Style | 8 | 13 | Magic Breath | 1 | 13 |
+| Karate | 8 | 11 | Judo | 8 | 11 |
+| Staff | 8 | 11 | Philosophy | 12 | 14 |
+| Flying Jump | 6 | 14 | Yin-Yang Healing | 1 | 8 |
+| Meditation | 4 | 9 | Theology | 4 | 10 |
+| Breath Control | 1 | 7 | Acrobatics | 1 | 10 |
+| Stealth | 1 | 10 | Disintegrating Strike | 0.5 | 10 |
+| Pressure Points | 0.5 | 10 |
+
+*Other skills and maneuvers not listed*
+
+## Equipamento
+:::{layout-ncol="2" layout-nrow="5"} 
+Quimono do Imperador
+
+image1
+
+Capa de Harkwood
+
+image2
+
+Manoplas
+
+image3
+
+Roupas leves de Monge
+
+image4
+
+Botas Flutuantes
+
+image5
+:::
+
+<!-- ## (Des)Vantagens
+| Advantages | Points | Disadvantages | Points |
+|:----------:|:------:|:-------------:|:------:|
+| Trained by a Master | 40 | Vows | -15 |
+| Appearence +2/+3 (royalty) | - | Truthfulness (hates lying) | -5 |
+| Status +2/+3 (royalty) | - | Duty Sense (group) | -5 |
+| Reputation +2/+3 (royalty) | - | Fast Draw [*] | - |
+| Dragon Blue Tattoo | 15 | - | - |
+| Chi Talents [*] Level 3 | 45 | - | - | -->
+
+
+
+:::
+
+:::
+
+:::
+
+
+## Eglart de Targul
+
+::: {.grid}
+
+::: {.g-col-4}
+::: {layout-nrow="2"}
+
+![Eglart](img/eglart.jpg)
+
+```{r}
+#| echo: false
+#| eval: true
+
+library(fmsb)
+
+# Plot the data for han yu
+eglart <- df[rownames(df) %in% c("Max", "Min", "Eglart"), ]
+
+# Set the margins around the plot
+par(mar = c(4, 4, 4, 4))
+
+radarchart(eglart, axistype = 1, 
+           # custom polygon
+           pcol = rgb(0.9, 0.8, 0.1, 0.9), pfcol = rgb(0.9, 0.8, 0.1, 0.5), plwd = 4,
+           # custom the grid
+           cglcol = "grey", cglty = 1, axislabcol = "grey", caxislabels = seq(0, 20, 5), cglwd = 0.8,
+           #custom labels
+           vlcex = 0.8, vlabels = colnames(attributes), title = "Eglart")
+
+# Add the values at each point
+text(1.2 * eglart[2, ] / eglart[1, ], labels = eglart[1, ], col = "purple", cex = 1.0)
+
+```
+:::
+
+:::
+
+::: {.g-col-8}
+# Eglart
+
+Um humano(?) de aparência bastante estranha. 1,83 m e 80 kg ; alto e de ombros largos, possui cabelos escuros raspados dos lados, e olhos amarelados. À segunda vista, a pupila causa incomodo, pois parece ser fina como a de um gato.
+
+Veste um gibão de couro bastante fora de moda, especialmente para Caíthness, mas que certamente é estranho em toda Ytarria. Além de portar dois longos espadões às costas.
+
+Definitivamente, um sujeito bastante incomum.
+
+<!-- |                     |                       |                       |                      |
+|:-------------------:|:---------------------:|:---------------------:|:--------------------:|
+| **Player**          | Vinny Jones           | **Campaign**          | Fantasy              |
+| **Peculiaridades**  |                       | **Vantagens**         |   **Desvantagens**   |
+|Desconfortável ante autoridades|             | Treinado por um Mestre| Votos                |
+|Dá conselhos e cita provérbios|              | Talentos do Chi       | Odeia mentir         |
+|Prega calma, mas é explosivo...|            | Sete Chutes secretos   | Ritual de Chi        |
+|Humildade: Prioriza os Outros!|             |                        | Senso de Dever       |
+|Só bebe chá e sakê socialmente|             |                        | -                    | -->
+
+
+
+:::{.panel-tabset}
+
+## Atributos
+
+| Atributo  | Valor |                |Valor |
+|:---------:|:-----:|:--------------:|:----:|
+| ST        | 10    | PV             | 6    |
+| DX        | 14    | FP             | 10   |
+| IQ        | 11    |                |      |
+| HT        | 10    |                |      |
+
+| Dano Basico |       | Movimento    |      |
+|:-----------:|:-----:|:------------:|:----:|
+| Bal         | 1d    | Velocidade   | 5.25 |
+| GdP         | 1d-2  | Deslocamento | 5    |
+| Soco        | 1d-1  |              |      |
+| Chute       | 1d+1  |              |      |
+
+## Habilidades
+
+| Skill Name | Points | Skill Level | Skill Name | Points | Skill Level |
+|:----------:|:------:|:-----------:|:----------:|:------:|:-----------:|
+| Kung-Fu Dragon Style | 8 | 13 | Magic Breath | 1 | 13 |
+| Karate | 8 | 11 | Judo | 8 | 11 |
+| Staff | 8 | 11 | Philosophy | 12 | 14 |
+| Flying Jump | 6 | 14 | Yin-Yang Healing | 1 | 8 |
+| Meditation | 4 | 9 | Theology | 4 | 10 |
+| Breath Control | 1 | 7 | Acrobatics | 1 | 10 |
+| Stealth | 1 | 10 | Disintegrating Strike | 0.5 | 10 |
+| Pressure Points | 0.5 | 10 |
+
+*Other skills and maneuvers not listed*
+
+## Equipamento
+:::{layout-ncol="2" layout-nrow="5"} 
+Quimono do Imperador
+
+image1
+
+Capa de Harkwood
+
+image2
+
+Manoplas
+
+image3
+
+Roupas leves de Monge
+
+image4
+
+Botas Flutuantes
+
+image5
+:::
+
+<!-- ## (Des)Vantagens
+| Advantages | Points | Disadvantages | Points |
+|:----------:|:------:|:-------------:|:------:|
+| Trained by a Master | 40 | Vows | -15 |
+| Appearence +2/+3 (royalty) | - | Truthfulness (hates lying) | -5 |
+| Status +2/+3 (royalty) | - | Duty Sense (group) | -5 |
+| Reputation +2/+3 (royalty) | - | Fast Draw [*] | - |
+| Dragon Blue Tattoo | 15 | - | - |
+| Chi Talents [*] Level 3 | 45 | - | - | -->
+
+
+
+:::
+
+:::
+
+:::
+
+
+:::
+
+
+
+
