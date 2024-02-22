@@ -1,0 +1,11 @@
+{
+  "hash": "6b40b906d091647dbef9ac77ca46af20",
+  "result": {
+    "markdown": "---\ntitle: \"Automate pdf reports with Quarto and Python\"\nlang: \"en\"\nauthor: \"claudio v.\"\ndate: \"2023-03-31\"\ncategories: [news, code, analysis]\nimage: \"quarto_icon.png\"\nexecute:\n    engine: \"python\"    \ndraft: true\n\n---\n\nIn this post I'll walk us through how we can create some pdf reports in python and quarto, how to properlly publish it and how to automate the process of creating the reports.\n\n# Setting things up\n\nWe first need to set things up. For the purpose of this article, we will be using VSCode with Quarto to develope this project. \n\nYou can follow the [Quarto website](https://quarto.org/docs/get-started/) tutorial to install Quarto and the VSCode extension.\n\nAfter you have your quarto extention installed, you can create a new project by clicking on the Quarto icon on the left side of the VSCode window and then clicking on the \"New Project\" button.\n\n![Create New Project](imgs/create_new_project.png)\n\n![Select Default Project](imgs/select_type_project.png)\n\n![Create New Folder](imgs/create_new_folder.png)\n\nAfter that, you will see something like this:\n\n![Starting structure](imgs/lets_start.png)\n\nAs you can see we have 2 files. `_quarto.yml` and `automate_reporting.qmd`. \n\nTo make our lives easy we will install a pretty cool quarto extention called [PrettyPDF](https://nrennie.rbind.io/blog/making-pretty-pdf-quarto/), which will help us to make our pdf reports look better. To install the quarto extension and use the template file:\n\n::: {.cell execution_count=1}\n``` {.python .cell-code}\nquarto use template nrennie/PrettyPDF\n```\n:::\n\n\n![Install the template](imgs/install_template.png)\n\nAnd finally, lets create a envoirement for this project.\n\nI am on Mac so this is the command:\n\n::: {.cell execution_count=2}\n``` {.python .cell-code}\npython3 -m venv .venv\n```\n:::\n\n\nAnd to finish this part, I'll just create the folder structure we will be using for this project.\n\n![Folder structure](imgs/folder_structure.png)\n\n# Creating the report\n\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

@@ -3,24 +3,26 @@ project:
 
 website:
   title: "claudio"
-  site-url: https://www.myblogexample.io
-  description: "A great sample blog"
+  twitter-card: true
+  site-url: https://blog.claudiogoncalves.me
+  description: "Personal blog of Claudio Gonçalves"
+  search: 
+    location: navbar
+    type: textbox
   navbar:
-    # background: "lightgreen"
+    background: "slategray"
     right:
       - about.qmd
-      # - today_i_learned.qmd
-      - rpg.qmd
       - icon: github
         href: https://github.com/cvgoncalves
-      - icon: twitter
-        href: https://twitter.com/GoncalvesCv
+      # - icon: twitter
+      #   href: https://twitter.com/GoncalvesCv
 format:
   html:
     theme: 
       light: spacelab
-      dark: darkly
-    css: styles.css
+      dark: solar
+
 
 
 

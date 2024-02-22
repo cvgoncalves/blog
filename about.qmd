@@ -2,11 +2,12 @@
 title: "about"
 image: img/profile.jpg
 about:
+  id: hero-heading
   template: jolla
   links:
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com/GoncalvesCv
+    # - icon: twitter
+    #   text: Twitter
+    #   href: https://twitter.com/GoncalvesCv
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/cvgoncalves/
@@ -16,15 +17,5 @@ about:
 ---
 
 ::: {.intro}
-I'm a data scientist, a master of numbers and patterns. 
-
-I surf on waves of structured and unstructured data, hunting for meaningful insights that can transform how businesses operate. 
-
-I find the stories hidden in data and bring them to life using advanced statistical techniques and machine learning algorithms. 
-
-When I'm not crunching numbers, you can find me exploring the latest AI trends, or drinking some beer, maybe both. 
-
-I also love to playing games, reading books and watching movies.
-
-Welcome to my digital space, where data comes to life!
+I am a data scientist with a Master's degree, driven by curiosity and a passion for research. My interests span across various subjects, with a particular focus on politics and data. I believe in the transformative power of data and its potential to make a significant impact on the world when directed well. My passion for learning fuels my work, as I continuously seek to expand my knowledge and skills in the field of data science.
 :::

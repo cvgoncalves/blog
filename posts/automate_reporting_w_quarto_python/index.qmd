@@ -1,13 +1,16 @@
 ---
-title: "Automate pdf reports with Quarto and Python"
+title: "Automate pdf reports with Quarto and Python - 1"
 lang: "en"
 author: "claudio v."
-date: "2023-03-31"
+date: "2023-12-01"
 categories: [news, code, analysis]
 image: "quarto_icon.png"
 execute:
     engine: "python"    
-draft: true
+format: 
+  html:
+    code-fold: true
+
 
 ---
 
@@ -55,5 +58,7 @@ And to finish this part, I'll just create the folder structure we will be using 
 
 ![Folder structure](imgs/folder_structure.png)
 
-# Creating the report
+# Next steps
+
+On the next post we will start to create the report and see how we can automate the process of creating the report.
 

@@ -1,15 +1,17 @@
 ---
-title: "blog"
+title: "blog"  
 listing:
+  id: hero-heading
   contents: posts
-  sort: "date desc"
-  type: default
+    # - "blog_posts/*.qmd"
+  sort: 
+    - "date desc"
+    - "title desc"
+  type: grid
   categories: true
-  sort-ui: false
-  filter-ui: true
+  sort-ui: true
+  filter-ui: false
   feed: true
 page-layout: full
 title-block-banner: false
 ---
-
-

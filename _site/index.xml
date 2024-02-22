@@ -6,10 +6,129 @@
       version="2.0">
 <channel>
 <title>claudio</title>
-<link>https://www.myblogexample.io/index.html</link>
-<atom:link href="https://www.myblogexample.io/index.xml" rel="self" type="application/rss+xml"/>
-<description>A great sample blog</description>
-<generator>quarto-1.3.287</generator>
-<lastBuildDate>Sat, 20 May 2023 03:18:26 GMT</lastBuildDate>
+<link>https://blog.claudiogoncalves.me/</link>
+<atom:link href="https://blog.claudiogoncalves.me/index.xml" rel="self" type="application/rss+xml"/>
+<description>Personal blog of Claudio Gonçalves</description>
+<generator>quarto-1.4.530</generator>
+<lastBuildDate>Fri, 31 Mar 2023 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>Automate pdf reports with Quarto and Python - 1</title>
+  <dc:creator>claudio v.</dc:creator>
+  <link>https://blog.claudiogoncalves.me/posts/automate_reporting_w_quarto_python/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>In this post I’ll walk us through how we can create some pdf reports in python and quarto, how to properlly publish it and how to automate the process of creating the reports.</p>
+<section id="setting-things-up" class="level1">
+<h1>Setting things up</h1>
+<p>We first need to set things up. For the purpose of this article, we will be using VSCode with Quarto to develope this project.</p>
+<p>You can follow the <a href="https://quarto.org/docs/get-started/">Quarto website</a> tutorial to install Quarto and the VSCode extension.</p>
+<p>After you have your quarto extention installed, you can create a new project by clicking on the Quarto icon on the left side of the VSCode window and then clicking on the “New Project” button.</p>
+<div class="img-fluid quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://blog.claudiogoncalves.me/posts/automate_reporting_w_quarto_python/imgs/create_new_project.png" class="img-fluid figure-img"></p>
+<figcaption>Create New Project</figcaption>
+</figure>
+</div>
+<div class="img-fluid quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://blog.claudiogoncalves.me/posts/automate_reporting_w_quarto_python/imgs/select_type_project.png" class="img-fluid figure-img"></p>
+<figcaption>Select Default Project</figcaption>
+</figure>
+</div>
+<div class="img-fluid quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://blog.claudiogoncalves.me/posts/automate_reporting_w_quarto_python/imgs/create_new_folder.png" class="img-fluid figure-img"></p>
+<figcaption>Create New Folder</figcaption>
+</figure>
+</div>
+<p>After that, you will see something like this:</p>
+<div class="img-fluid quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://blog.claudiogoncalves.me/posts/automate_reporting_w_quarto_python/imgs/lets_start.png" class="img-fluid figure-img"></p>
+<figcaption>Starting structure</figcaption>
+</figure>
+</div>
+<p>As you can see we have 2 files. <code>_quarto.yml</code> and <code>automate_reporting.qmd</code>.</p>
+<p>To make our lives easy we will install a pretty cool quarto extention called <a href="https://nrennie.rbind.io/blog/making-pretty-pdf-quarto/">PrettyPDF</a>, which will help us to make our pdf reports look better. To install the quarto extension and use the template file:</p>
+<div id="6829cca7" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1">quarto use template nrennie<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span>PrettyPDF</span></code></pre></div>
+</details>
+</div>
+<div class="img-fluid quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://blog.claudiogoncalves.me/posts/automate_reporting_w_quarto_python/imgs/install_template.png" class="img-fluid figure-img"></p>
+<figcaption>Install the template</figcaption>
+</figure>
+</div>
+<p>And finally, lets create a envoirement for this project.</p>
+<p>I am on Mac so this is the command:</p>
+<div id="1428c4e3" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1">python3 <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span>m venv .venv</span></code></pre></div>
+</details>
+</div>
+<p>And to finish this part, I’ll just create the folder structure we will be using for this project.</p>
+<div class="img-fluid quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://blog.claudiogoncalves.me/posts/automate_reporting_w_quarto_python/imgs/folder_structure.png" class="img-fluid figure-img"></p>
+<figcaption>Folder structure</figcaption>
+</figure>
+</div>
+</section>
+<section id="next-steps" class="level1">
+<h1>Next steps</h1>
+<p>On the next post we will start to create the report and see how we can automate the process of creating the report.</p>
+
+
+</section>
+
+ ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://blog.claudiogoncalves.me/posts/automate_reporting_w_quarto_python/</guid>
+  <pubDate>Fri, 31 Mar 2023 04:00:00 GMT</pubDate>
+  <media:content url="https://blog.claudiogoncalves.me/posts/automate_reporting_w_quarto_python/quarto_icon.png" medium="image" type="image/png" height="144" width="144"/>
+</item>
+<item>
+  <title>Quarto with R and Python</title>
+  <link>https://blog.claudiogoncalves.me/posts/quarto_r_python/</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<p>Today I learned something simple and cool.</p>
+<p>I can use R and Python in the same document with <a href="https://quarto.org/">Quarto</a>. To post using different engines, I just need to use the <code>engine</code> option in the code chunk.</p>
+<p>For example, to use R, I just need to use <code>engine = "r"</code> in the yaml of the post. To use Python, I just need to use <code>engine = "python"</code>.</p>
+<p>For R:</p>
+<pre class="{yaml}"><code>execute:
+  engine: "r"</code></pre>
+<p>For Python:</p>
+<pre class="{yaml}"><code>execute:
+  engine: "python"</code></pre>
+
+
+
+ ]]></description>
+  <category>today_I_learned</category>
+  <category>quarto</category>
+  <category>r</category>
+  <category>python</category>
+  <guid>https://blog.claudiogoncalves.me/posts/quarto_r_python/</guid>
+  <pubDate>Sat, 22 May 2021 04:00:00 GMT</pubDate>
+</item>
 </channel>
 </rss>
