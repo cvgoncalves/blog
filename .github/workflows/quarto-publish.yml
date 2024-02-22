@@ -1,0 +1,26 @@
+name: Deploy Quarto Site
+
+on:
+  push:
+    branches:
+      - content  # Or your default branch where you commit your source files
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: Configure git
+        run: |
+          git config --global user.email "cvg.goncalves@protonmail.com"
+          git config --global user.name "cloudy"
+
+      - name: Deploy to gh-pages
+        run: |
+          git subtree split --prefix _site -b pages  # Create a new branch from _site directory
+          git push -f origin pages:pages  # Force push to the pages branch
+          git branch -D pages  # Delete the local pages branch
