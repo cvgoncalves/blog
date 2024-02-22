@@ -1,0 +1,30 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "about",
+    "section": "",
+    "text": "I am a data scientist with a Master’s degree, driven by curiosity and a passion for research. My interests span across various subjects, with a particular focus on politics and data. I believe in the transformative power of data and its potential to make a significant impact on the world when directed well. My passion for learning fuels my work, as I continuously seek to expand my knowledge and skills in the field of data science."
+  },
+  {
+    "objectID": "posts/automate_reporting_w_quarto_python/index.html",
+    "href": "posts/automate_reporting_w_quarto_python/index.html",
+    "title": "Automate pdf reports with Quarto and Python - 1",
+    "section": "",
+    "text": "In this post I’ll walk us through how we can create some pdf reports in python and quarto, how to properlly publish it and how to automate the process of creating the reports.\n\nSetting things up\nWe first need to set things up. For the purpose of this article, we will be using VSCode with Quarto to develope this project.\nYou can follow the Quarto website tutorial to install Quarto and the VSCode extension.\nAfter you have your quarto extention installed, you can create a new project by clicking on the Quarto icon on the left side of the VSCode window and then clicking on the “New Project” button.\n\n\n\nCreate New Project\n\n\n\n\n\nSelect Default Project\n\n\n\n\n\nCreate New Folder\n\n\nAfter that, you will see something like this:\n\n\n\nStarting structure\n\n\nAs you can see we have 2 files. _quarto.yml and automate_reporting.qmd.\nTo make our lives easy we will install a pretty cool quarto extention called PrettyPDF, which will help us to make our pdf reports look better. To install the quarto extension and use the template file:\n\n\nCode\nquarto use template nrennie/PrettyPDF\n\n\n\n\n\nInstall the template\n\n\nAnd finally, lets create a envoirement for this project.\nI am on Mac so this is the command:\n\n\nCode\npython3 -m venv .venv\n\n\nAnd to finish this part, I’ll just create the folder structure we will be using for this project.\n\n\n\nFolder structure\n\n\n\n\nNext steps\nOn the next post we will start to create the report and see how we can automate the process of creating the report."
+  },
+  {
+    "objectID": "posts/quarto_r_python/index.html",
+    "href": "posts/quarto_r_python/index.html",
+    "title": "Quarto with R and Python",
+    "section": "",
+    "text": "Today I learned something simple and cool.\nI can use R and Python in the same document with Quarto. To post using different engines, I just need to use the engine option in the code chunk.\nFor example, to use R, I just need to use engine = \"r\" in the yaml of the post. To use Python, I just need to use engine = \"python\".\nFor R:\nexecute:\n  engine: \"r\"\nFor Python:\nexecute:\n  engine: \"python\""
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "blog",
+    "section": "",
+    "text": "Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n\n\n\n\n\n\n\n\n\n\nAutomate pdf reports with Quarto and Python - 1\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\nclaudio v.\n\n\nDec 1, 2023\n\n\n\n\n\n\n\n\n\n\n\n\nQuarto with R and Python\n\n\n\ntoday_I_learned\n\n\nquarto\n\n\nr\n\n\npython\n\n\n\n\n\n\n\n\n\n\nMay 22, 2021\n\n\n\n\n\n\n\n\nNo matching items"
+  }
+]
