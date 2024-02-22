@@ -12,7 +12,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          persist-credentials: false
+          persist-credentials: true  # This allows Git operations to use the token
+          token: ${{ secrets.GITHUB_TOKEN }}  # Use the built-in GitHub Token for authentication
 
       - name: Configure git
         run: |
